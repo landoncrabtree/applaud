@@ -16,10 +16,15 @@ NOTE: This is not intended to be hosted on a public server. It is designed to be
 ## Supported LLM Providers
 
 ✅ OpenAI (`.env` `OPENAI_API_KEY`)
+
 ✅ Anthropic (`.env` `ANTHROPIC_API_KEY`)
+
 ✅ Google (`.env` `GOOGLE_API_KEY`)
+
 ✅ Ollama (`.env` `OLLAMA_BASE_URL` and `OLLAMA_API_KEY`)
+
 ✅ OpenRouter (`.env` `OPENROUTER_API_KEY`)
+
 
 Once the frontend and backend are deployed, visiting http://localhost:3000 for the first time will prompt you to set up your LLM provider. You can change models at any time by selecting the cog icon in the top right corner.
 If you wish to use Ollama, there are a few additional steps to take. 
