@@ -1,0 +1,29 @@
+name: applaud
+
+services:
+  frontend:
+    image: node:alpine
+    environment:
+      - PORT=3000
+    env_file:
+      - .env
+    volumes:
+      - ./frontend:/app
+    command: sh -c "chmod +x /app/init.sh && /app/init.sh"
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  backend:
+    image: node:alpine
+    environment:
+      - PORT=8080
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
+    command: sh -c "chmod +x /app/init.sh && /app/init.sh"
+    ports:
+      - 8080:8080
+
