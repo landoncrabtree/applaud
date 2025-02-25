@@ -7,13 +7,12 @@ import { useTranscripts } from '@/hooks/useTranscripts'
 import { TranscriptView } from './TranscriptView'
 import { useState } from 'react'
 
-export function TranscriptList() {
-  const { transcripts, loading, error } = useTranscripts()
-  const [selectedId, setSelectedId] = useState<string | null>(null)
+interface TranscriptListProps {
+  onSelect: (id: string) => void;
+}
 
-  if (selectedId) {
-    return <TranscriptView id={selectedId} onBack={() => setSelectedId(null)} />
-  }
+export function TranscriptList({ onSelect }: TranscriptListProps) {
+  const { transcripts, loading, error } = useTranscripts()
 
   if (loading) {
     return (
@@ -50,7 +49,7 @@ export function TranscriptList() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {transcripts.map((transcript) => (
-        <div key={transcript.id} onClick={() => setSelectedId(transcript.id)}>
+        <div key={transcript.id} onClick={() => onSelect(transcript.id)}>
           <Card className="group hover:shadow-lg transition-all duration-300 cursor-pointer">
             <CardHeader className="bg-white dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-800">
               <div className="flex items-start justify-between">

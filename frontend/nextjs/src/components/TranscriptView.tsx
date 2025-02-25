@@ -167,7 +167,7 @@ export function TranscriptView({ id, onBack }: TranscriptViewProps) {
           className="flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
         >
           <ChevronLeftIcon className="h-5 w-5 mr-2" />
-          Back to Transcripts
+          Back to Home
         </Button>
         <Button
           variant="ghost"

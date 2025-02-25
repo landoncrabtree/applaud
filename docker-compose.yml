@@ -23,6 +23,7 @@ services:
       - .env
     volumes:
       - ./backend:/app
+      - "$WATCHER_DIR:/app/uploads" # mount the watcher directory so we can upload files and have them transcribed
     command: sh -c "chmod +x /app/init.sh && /app/init.sh"
     ports:
       - 8080:8080

@@ -22,6 +22,12 @@ import ReactMarkdown from 'react-markdown'
 import { Flashcard } from './Flashcard'
 import { MarkdownRenderer } from './MarkdownRenderer'
 import { Loader2 } from "lucide-react"
+import { defaultQuestions } from '@/stores/settings'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 
 interface AIToolsPanelProps {
   transcriptId: string;
@@ -31,6 +37,8 @@ export function AIToolsPanel({ transcriptId }: AIToolsPanelProps) {
   const [customQuestion, setCustomQuestion] = useState('')
   const [loading, setLoading] = useState<string | null>(null)
   const [result, setResult] = useState<any>(null)
+  const [showDefaultQuestions, setShowDefaultQuestions] = useState(true)
+  const [randomQuestions] = useState(() => getRandomQuestions(defaultQuestions, 5))
 
   const handleSummarize = async () => {
     setLoading('summarize')
@@ -193,12 +201,38 @@ export function AIToolsPanel({ transcriptId }: AIToolsPanelProps) {
               </Tooltip>
 
               <div className="flex space-x-2">
-                <Input
-                  placeholder="Ask a question..."
-                  value={customQuestion}
-                  onChange={(e) => setCustomQuestion(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleAskQuestion()}
-                />
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <div className="flex-1">
+                      <Input
+                        placeholder="Ask a question..."
+                        value={customQuestion}
+                        onChange={(e) => setCustomQuestion(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleAskQuestion()}
+                        className="w-full"
+                      />
+                    </div>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-80 max-h-[300px] overflow-y-auto">
+                    <div className="space-y-2">
+                      <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+                        Suggested Questions
+                      </p>
+                      {randomQuestions.map((question, index) => (
+                        <Button
+                          key={index}
+                          variant="ghost"
+                          className="w-full justify-start text-left text-sm text-wrap whitespace-normal h-auto py-2"
+                          onClick={() => {
+                            setCustomQuestion(question)
+                          }}
+                        >
+                          {question}
+                        </Button>
+                      ))}
+                    </div>
+                  </PopoverContent>
+                </Popover>
                 <Button
                   variant="outline"
                   onClick={handleAskQuestion}
@@ -343,4 +377,9 @@ export function AIToolsPanel({ transcriptId }: AIToolsPanelProps) {
       )}
     </div>
   )
+}
+
+function getRandomQuestions(questions: string[], count: number) {
+  const shuffled = [...questions].sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, count)
 } 

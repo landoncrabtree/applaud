@@ -6,8 +6,8 @@ var logger = require('morgan');
 var cors = require('cors');
 
 const database = require('./database');
-
-var uploadRouter = require('./routes/upload');
+const uploadRouter = require('./routes/upload');
+const { attachWebSocket } = require('./websocket');
 var transcriptRouter = require('./routes/transcript');
 var settingsRouter = require('./routes/settings');
 var summarizeRouter = require('./routes/summarize');
@@ -44,4 +44,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-module.exports = app;
+// Export both app and attachWebSocket
+module.exports = { app, attachWebSocket };

@@ -5,7 +5,11 @@ const zlib = require('zlib');
 
 router.get('/all', async (req, res) => {
   try {
-    const stmt = db.prepare('SELECT id, name, description FROM transcripts');
+    const stmt = db.prepare(`
+      SELECT id, name, description, created_at 
+      FROM transcripts 
+      ORDER BY created_at DESC
+    `);
     const result = stmt.all();
     return res.status(200).json(result);
   } catch (error) {

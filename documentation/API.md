@@ -27,6 +27,22 @@ Expects a base64 encoded representation of a gzip'd transcript (JSON) and audio 
 }
 ```
 
+### POST /api/v1/upload/recording
+
+Uploads an audio recording to the backend.
+
+#### Request Body
+
+Expects an audio file (mp3).
+
+#### Response
+
+```json
+{
+  "message": "Audio file uploaded successfully",
+}
+```
+
 ## Transcript
 
 ### GET /api/v1/transcript/all

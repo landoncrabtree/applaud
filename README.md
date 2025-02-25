@@ -59,6 +59,20 @@ This has been tested on macOS. Linux support should be supported. Windows suppor
     - The frontend will be available at `http://localhost:3000`
     - The backend will be available at `http://localhost:8080`
 
+## Screenshots
+
+![Home](./screenshots/home.png)
+
+![Transcript View](./screenshots/transcript_view.png)
+
+![Summarize](./screenshots/summarize.png)
+
+![Flashcards](./screenshots/flashcards.png)
+
+![Questions](./screenshots/questions.png)
+
+![Model Select](./screenshots/model_select.png)
+
 ## Benchmarks
 
 Using `insanely-fast-whisper` with `distil-whisper/large-v2` and `pyannote/speaker-diarization-3.1` on a M2 Max MacBook Pro (32GB RAM, 30 GPU Cores)

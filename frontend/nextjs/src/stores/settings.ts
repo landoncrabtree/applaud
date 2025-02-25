@@ -21,4 +21,19 @@ export const providerOptions = {
   google: ['gemini-2.0-flash-001', 'gemini-2.0-pro-exp-02-05', 'gemini-2.0-flash-lite-preview-02-05', 'gemini-2.0-flash-thinking-exp-01-21', 'gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'],
   openrouter: ['deepseek/deepseek-r1', 'qwen/qwen-turbo', 'qwen/qwen-plus', 'qwen/qwen-max', 'meta-llama/llama-3.3-70b-instruct'],
   ollama: [] // Custom input
-} 
+}
+
+export const defaultQuestions = [
+  'What is the main topic of the transcript?',
+  'What are the key points discussed in the transcript?',
+  'What are the main takeaways from the transcript?',
+  'What are the main recommendations from the transcript?',
+  'What are the main insights from the transcript?',
+  'What are the main conclusions from the transcript?',
+  'What are the main recommendations from the transcript?',
+  'What deadlines are mentioned in the transcript?',
+  'What are the main next steps from the transcript?',
+  'What are the main follow up questions from the transcript?',
+  'What are the main follow up actions from the transcript?',
+  'How can I ensure an understanding of the content discussed in the transcript?',
+]
